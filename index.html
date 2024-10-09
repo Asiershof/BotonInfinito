@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón infinito</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="top3" class="top3">
+        <h2>Top 3 Puntuaciones</h2>
+        <ol id="listaTop3"></ol>
+    </div>
+    
+    <div id="pantallaComienzo" class="pantalla">
+        <h1>EL BOTÓN DE LA PROBABILIDAD</h1>
+        <p>
+            ¡Haz click en él hasta conseguir la mayor puntuación y estar entre los mejores
+        </p>
+        <button id="botonComienzo">
+            ¡Comenzar el Juego!
+        </button>
+    </div>
+
+    <div id="pantallaJuego" class="pantalla oculto">
+        <h2 id="puntuacionMaximaJugador">Tu Puntuación Máxima: 0</h2>
+        <div class="contenedorBoton">
+            <button id="botonContador">
+                <span id="contador">0</span>
+                <div id="animacionReinicio">
+                    <img src="images/troll.png" alt="troll">
+                </div>
+            </button>
+        </div>
+        <p id="probabilidadReinicio">
+            Probabilidad de reinicio: 0% JEJE
+        </p>
+        <div id="formularioNombre" class="oculto">
+            <input type="text" id="inputNombre" placeholder="Ingresa tu nombre">
+            <button id="botonGuardar">Guardar</button>
+        </div>
+    </div>
+
+    <div id="confeti"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
