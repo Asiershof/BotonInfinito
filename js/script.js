@@ -91,6 +91,21 @@ function guardarNombre() {
         formularioNombre.classList.add('oculto');
         actualizarPantalla();
         guardarPuntuacionesMaximas();
+
+        // Enviar datos al servidor
+        fetch('score.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombre: nombre,
+                puntuacion: puntuacionMaximaJugador
+            }),
+        })
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch((error) => console.error('Error:', error));
     }
 }
 
@@ -115,16 +130,21 @@ function actualizarListaTop3() {
     });
 }
 
-function cargarPuntuacionesMaximas() {
-    const puntuacionesGuardadas = localStorage.getItem('top3Puntuaciones');
-    if (puntuacionesGuardadas) {
-        top3Puntuaciones = JSON.parse(puntuacionesGuardadas);
-        actualizarListaTop3();
-        //localStorage.clear();
-        //PARA RESETAR LOS DATOS
-    }
-}
+
 
 function guardarPuntuacionesMaximas() {
     localStorage.setItem('top3Puntuaciones', JSON.stringify(top3Puntuaciones));
 }
+
+function cargarPuntuacionesDesdeServidor() {
+    fetch('get_scores.php')
+        .then(response => response.json())
+        .then(data => {
+            top3Puntuaciones = data;
+            actualizarListaTop3();
+        })
+        .catch((error) => console.error('Error:', error));
+}
+
+// Llama a esta función al inicio del script
+document.addEventListener('DOMContentLoaded', cargarPuntuacionesDesdeServidor);
