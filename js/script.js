@@ -61,7 +61,7 @@ function manejarClic() {
 function actualizarPantalla() {
     contadorMostrado.textContent = contador;
     puntuacionMaximaJugadorMostrada.textContent = `Tu Máximo: ${puntuacionMaximaJugador}`;
-    probabilidadReinicioMostrada.textContent = `Probabilidad de reinicio: ${probabilidadReinicio.toFixed(1)}%`;
+    probabilidadReinicioMostrada.textContent = `Probabilidad de reinicio: ${probabilidadReinicio.toFixed(0)}%`;
     actualizarListaTop3();
 }
 
